@@ -1,13 +1,6 @@
 import { useProductStore } from '@/store/product'
-import { toaster } from '@/components/ui/toaster'
-import {
-  createOverlay,
-  Dialog,
-  Portal,
-  Stack,
-  Button,
-  Input,
-} from '@chakra-ui/react'
+import toaster from '@/config/toaster'
+import { createOverlay, Dialog, Portal, Stack, Button, Input } from '@chakra-ui/react'
 import { useState } from 'react'
 
 interface ContactFormProps {
@@ -15,7 +8,7 @@ interface ContactFormProps {
   id: string
   product: {
     name: string
-    price: string
+    price: number
     image: string
   }
 }
@@ -63,17 +56,17 @@ const modal = createOverlay<ContactFormProps>((props) => {
                   <Input
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    placeholder="Enter your name"
+                    placeholder="Enter new product name"
                   />
                   <Input
                     value={price}
-                    onChange={(e) => setPrice(e.target.value)}
-                    placeholder="Enter your name"
+                    onChange={(e) => setPrice(Number(e.target.value))}
+                    placeholder="Enter new product price"
                   />
                   <Input
                     value={image}
                     onChange={(e) => setImage(e.target.value)}
-                    placeholder="Enter your name"
+                    placeholder="Enter new product image"
                   />
                   <Button type="submit">Update</Button>
                 </Stack>

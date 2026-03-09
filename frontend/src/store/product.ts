@@ -3,7 +3,7 @@ import { create } from 'zustand'
 type Product = {
   _id: string
   name: string
-  price: string
+  price: number
   image: string
 }
 

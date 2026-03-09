@@ -1,13 +1,6 @@
 import { useColorModeValue } from '@/components/ui/color-mode'
-import {
-  Box,
-  Button,
-  Container,
-  Heading,
-  Input,
-  VStack,
-} from '@chakra-ui/react'
-import { toaster } from '@/components/ui/toaster'
+import { Box, Button, Container, Heading, Input, VStack } from '@chakra-ui/react'
+import toaster from '@/config/toaster'
 import { useState } from 'react'
 import { useProductStore } from '../store/product'
 
@@ -60,33 +53,23 @@ function Createpage() {
               placeholder="product name"
               name="name"
               value={newProduct.name}
-              onChange={(e) =>
-                setNewProduct({ ...newProduct, name: e.target.value })
-              }
+              onChange={(e) => setNewProduct({ ...newProduct, name: e.target.value })}
             />
             <Input
               placeholder="product price"
               name="price"
               value={newProduct.price}
-              type="number"
-              onChange={(e) =>
-                setNewProduct({ ...newProduct, price: e.target.value })
-              }
+              type="string"
+              onChange={(e) => setNewProduct({ ...newProduct, price: e.target.value })}
             />
             <Input
               placeholder="product image"
               name="image"
               value={newProduct.image}
-              onChange={(e) =>
-                setNewProduct({ ...newProduct, image: e.target.value })
-              }
+              onChange={(e) => setNewProduct({ ...newProduct, image: e.target.value })}
             />
 
-            <Button
-              colorScheme={'blue'}
-              onClick={handleSubmitProduct}
-              w={'full'}
-            >
+            <Button colorScheme={'blue'} onClick={handleSubmitProduct} w={'full'}>
               Add Product
             </Button>
           </VStack>

@@ -3,14 +3,14 @@ import { CiEdit } from 'react-icons/ci'
 import { MdDeleteOutline } from 'react-icons/md'
 import { useColorModeValue } from './ui/color-mode'
 import { useProductStore } from '@/store/product'
-import { toaster } from '@/components/ui/toaster'
+import toaster from '@/config/toaster'
 import modal from './ui/modal'
 
 type Product = {
   product: {
     _id: string
     name: string
-    price: string
+    price: number
     image: string
   }
 }
@@ -62,16 +62,10 @@ function ProductCard({ product }: Product) {
             ${product.price}
           </Text>
           <HStack>
-            <IconButton
-              colorScheme={'blue'}
-              onClick={() => handleEditProduct(product._id)}
-            >
+            <IconButton colorScheme={'blue'} onClick={() => handleEditProduct(product._id)}>
               <CiEdit />
             </IconButton>
-            <IconButton
-              colorScheme={'blue'}
-              onClick={() => handleDeleteProduct(product._id)}
-            >
+            <IconButton colorScheme={'blue'} onClick={() => handleDeleteProduct(product._id)}>
               <MdDeleteOutline />
             </IconButton>
           </HStack>
