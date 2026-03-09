@@ -26,7 +26,11 @@ type Store = {
   deleteProduct: (id: string) => Promise<{ success: boolean; message: string }>
   editProduct: (
     id: string,
-    update: {}
+    newProductData: {
+      name: string
+      price: number
+      image: string
+    },
   ) => Promise<{ success: boolean; message: string }>
 }
 
@@ -81,9 +85,7 @@ export const useProductStore = create<Store>()((set) => ({
     const data = await res.json()
     if (!data.success) return { success: false, message: data.message }
     set((state) => ({
-      products: state.products.map((product) =>
-        product._id === id ? data.data : product
-      ),
+      products: state.products.map((product) => (product._id === id ? data.data : product)),
     }))
     return { success: true, message: 'Product successfully edited' }
   },
